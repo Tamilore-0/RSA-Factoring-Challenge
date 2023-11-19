@@ -2,29 +2,20 @@
 import sys
 import math
 
-def factorize(number):
-    if number % 2 == 0:
-        return f"{number}=2*{number // 2}"
+with open(sys.argv[1], 'r') as file:
+    lines = file.readlines()
+    
+    for line in lines:
+        number = int(line)
+        sq_rt = int(math.sqrt(number)) + 1
+        factors = []
+        for i in range(2, sq_rt):
+            if number % i == 0:
+                factors.append(i)
+                factors.append(number // i)
+                print(f"{number:d}={factors[1]:d}*{factors[0]:d}")
+                break
+        else:
+            print(f"{number:d}={number:d}*{1:d}")
 
-    sqrt_num = math.isqrt(number) + 1
-    for i in range(3, sqrt_num, 2):
-        if number % i == 0:
-            return f"{number}={i}*{number // i}"
-
-    return f"{number}={number}*1"
-
-def main(filename):
-    with open(filename, 'r') as file:
-        lines = file.readlines()
-
-        for line in lines:
-            number = int(line.strip())
-            result = factorize(number)
-            print(result)
-
-if __name__ == "__main__":
-    if len(sys.argv) != 2:
-        print("Usage: factors <file>")
-        sys.exit(1)
-
-    main(sys.argv[1])
+        
