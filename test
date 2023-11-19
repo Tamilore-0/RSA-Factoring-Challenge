@@ -1,23 +1,15 @@
 #!/usr/bin/python3
-def factorize_into_two(number):
-    factors = []
+import sys
 
-    for i in range(2, number):
-        if number % i == 0:
-            factors.append(i)
-            factors.append(number // i)
-            break
-
-    return factors
-
-# Input a number
-user_input = int(input("Enter a number: "))
-
-# Factorize the number into two factors
-result = factorize_into_two(user_input)
-
-# Display the result
-if result:
-    print(f"The factors of {user_input} are: {result[0]} and {result[1]}")
-else:
-    print(f"{user_input} is a prime number and cannot be factorized into two integers.")
+with open(sys.argv[1], 'r') as file:
+    lines = file.readlines()
+    
+    for line in lines:
+        number = int(line)
+        factors = []
+        for i in range(2, number):
+            if number % i == 0:
+                factors.append(i)
+                factors.append(number // i)
+                break
+        print(f"{number}={factors[1]}*{factors[0]}")

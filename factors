@@ -6,11 +6,12 @@ with open(sys.argv[1], 'r') as file:
     
     for line in lines:
         number = int(line)
-        factors = []
-        for i in range(2, number):
-            if number % i == 0:
-                factors.append(i)
-                factors.append(number // i)
-                break
-        print(f"{number} = {factors[1]} * {factors[0]}")
+        a = 2
+        if number % a != 0:
+            a = 3
+        elif number % a != 0:
+            a = 5
+        elif number % a != 0:
+            a = 7
+        print(f"{number}={number // a}*{a}")
         
