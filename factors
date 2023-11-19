@@ -1,0 +1,17 @@
+#!/usr/bin/python3
+import sys
+
+with open(sys.argv[1], 'r') as file:
+    lines = file.readlines()
+    
+    for line in lines:
+        number = int(line)
+        a = 2
+        if number % a != 0:
+            a = 3
+        elif number % a != 0:
+            a = 5
+        elif number % a != 0:
+            a = 7
+        print(f"{number} = {number // a} * {a}")
+        
