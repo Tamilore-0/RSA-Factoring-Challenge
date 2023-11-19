@@ -1,11 +1,16 @@
 #!/usr/bin/python3
-#!/usr/bin/python3
 import sys
+import math
 
 def factorize(number):
-    for i in range(2, int(number**0.5) + 1):
+    if number % 2 == 0:
+        return f"{number}=2*{number // 2}"
+
+    sqrt_num = math.isqrt(number) + 1
+    for i in range(3, sqrt_num, 2):
         if number % i == 0:
-            return f"{number}={i}*{number//i}"
+            return f"{number}={i}*{number // i}"
+
     return f"{number}={number}*1"
 
 def main(filename):
